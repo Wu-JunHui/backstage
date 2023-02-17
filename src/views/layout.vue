@@ -4,15 +4,17 @@
       <!-- 左侧边栏 -->
       <Sidebar></Sidebar>
 
-   
       <!-- 右容器 -->
       <el-container>
         <!-- 标题栏 -->
         <el-header>
           <Header></Header>
         </el-header>
+
         <!-- 主体内容 -->
         <el-main>
+          <!-- 标签栏 -->
+          <Tags></Tags>
           <RouterView></RouterView>
         </el-main>
       </el-container>
@@ -24,11 +26,13 @@
 import { defineComponent } from 'vue'
 import Header from '../components/Header.vue'
 import Sidebar from '../components/Sidebar.vue'
+import Tags from '../components/Tags.vue'
 
 export default defineComponent({
   components: {
     Header,
-    Sidebar
+    Sidebar,
+    Tags
   }
 })
 </script>

@@ -35,6 +35,8 @@
 
 <script>
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+
 export default {
   setup() {
     // 定义菜单结构
@@ -75,12 +77,16 @@ export default {
 
     // 引入router方法
     const router = useRouter()
+    // 引入vuex方法
+    const store = useStore()
 
     // 定义点击菜单点击事件回调
     const clickMenu = item => {
       router.push({
-        name:item.name, // 跳转路由名称
+        name: item.name // 跳转路由名称
       })
+      // 通过Vuex管理以实现面包屑
+      store.commit('selectSidebarMenu',item)
     }
     return {
       noChildren,

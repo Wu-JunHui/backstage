@@ -10,5 +10,35 @@ export default {
       data: params,
       mock: true
     })
+  },
+  getCountData() {
+    return request({
+      url: '/home/getCountData',
+      method: 'get',
+      mock: true
+    })
+  },
+  getEchartsData() {
+    return request({
+      url: '/home/getEchartsData',
+      method: 'get',
+      mock: true
+    })
+  },
+  getUserData(params) {
+    return request({
+      url: '/user/getUser',
+      method: 'get',
+      mock: false, // 不调用faskmock，调用本地mock
+      data: params
+    })
+  },
+  addUser(params) {
+    return request({
+      url: '/user/add',
+      method: 'post',
+      mock: false, // 不调用faskmock，调用本地mock
+      data: params
+    })
   }
 }

@@ -5,7 +5,10 @@
       <el-button size="small" color="#e3d9d0" :dark="isDark" title="隐藏菜单" @click="hideSidebar">
         <el-icon :size="18" color="#2cb2c2"><Menu /></el-icon
       ></el-button>
-      <h2>首页</h2>
+      <el-breadcrumb separator="/" class="bread">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="current.path" v-if="current">{{ current.label }}</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
 
     <!-- 标题右侧 -->
@@ -27,6 +30,7 @@
 
 <script>
 import { useStore } from 'vuex'
+import { computed } from 'vue'
 export default {
   setup() {
     let store = useStore()
@@ -36,8 +40,11 @@ export default {
     let hideSidebar = () => {
       store.commit('updateBarCollapse')
     }
-
-    return { getImgSrc, hideSidebar }
+    // 通过计算属性获取Vuex中的currentMenu变量
+    const current = computed(() => {
+      return store.state.currentMenu
+    })
+    return { getImgSrc, hideSidebar, current }
   }
 }
 </script>
@@ -56,9 +63,16 @@ export default {
     display: flex;
     align-items: center;
     color: #fff;
-    h2 {
+
+    .bread {
       margin-left: 10px;
-      letter-spacing: 2px;
+      span {
+        color: #fff;
+        cursor: pointer !important;
+      }
+      span:hover {
+        color: #2cb2c2;
+      }
     }
   }
   .h-right {
