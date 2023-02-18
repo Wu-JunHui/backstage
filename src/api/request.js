@@ -1,3 +1,4 @@
+/* 二次封装axios */
 import axios from 'axios'
 import config from '../config/axios-config.js'
 import { ElMessage } from 'element-plus'
