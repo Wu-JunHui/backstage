@@ -10,7 +10,7 @@ import router from './router/router.js'
 // 导入Vuex模块
 import store from './store/store.js'
 // 导入mock模块
-import './api/mock.js'
+import './mock/mock.js'
 // 导入已封装好的全局接口管理模块api.js
 import api from './api/api'
 // 导入vue-cookies
