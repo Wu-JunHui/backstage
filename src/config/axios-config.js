@@ -1,17 +1,17 @@
 // Ajax环境配置文件
 
-// 获取当前项目的环境，获取不到则默认为开发prod
+// 获取vite项目的环境变量，读取当前应用运行模式，获取不到则默认为线上prod
 const env = import.meta.env.MODE || 'prod'
 
 const EnvConfig = {
   // 开发环境
   development: {
-    baseApi: '/api',
+    baseApi: 'https://www.fastmock.site/mock/faa967e1e23a267ad0745b2556a9b204/api',
     mockApi: 'https://www.fastmock.site/mock/faa967e1e23a267ad0745b2556a9b204/api' // fastmock接口根地址
   },
   // 测试环境（为不存在的模拟接口，需与后端对接）
   test: {
-    baseApi: '/test.com/api',
+    baseApi: 'https://www.fastmock.site/mock/faa967e1e23a267ad0745b2556a9b204/api',
     mockApi: 'https://www.fastmock.site/mock/faa967e1e23a267ad0745b2556a9b204/api' // fastmock接口根地址
   },
   // 线上环境（当前因部署为静态项目，直接使用fastmock）

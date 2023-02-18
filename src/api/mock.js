@@ -4,7 +4,7 @@ import userApi from './mockData/user.js'
 import permissionApi from './mockData/permission.js'
 // 拦截请求，返回通过Mock模拟的数据
 
-// 本地获取首页图标数据
+// 本地获取首页图标数据（fastmock）
 Mock.mock('/home/getData', homeApi.getHomeData)
 
 // 本地获取user的数据

@@ -7,7 +7,7 @@ const NETWORK_ERROR = '网络请求异常，请稍后重试...'
 // 创建一个axios实例对象
 const service = axios.create({
   // 将配置环境中的接口地址设为全局请求根路径
-  baseURL: config.baseApi
+  baseURL: config.baseURL
 })
 
 // 在请求之前做一些事情，即设置请求拦截器
@@ -60,7 +60,7 @@ function request(options) {
   // 对线上环境的处理
   if (config.env === 'prod') {
     // 若为线上环境，则修改请求根路径为线上环境所配置的路径，杜绝使用mock
-    service.defaults.baseURL = config.baseApi
+    service.defaults.baseURL = config.mockApi
   } else {
     // 若为非线上，则依据前面获取的isMock判断是否使用mockApi
     service.defaults.baseURL = isMock ? config.mockApi : config.baseApi
