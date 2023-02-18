@@ -20,7 +20,7 @@
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item>个人中心</el-dropdown-item>
-            <el-dropdown-item>退出登录</el-dropdown-item>
+            <el-dropdown-item @click="logoutHandler">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -30,10 +30,13 @@
 
 <script>
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import { computed } from 'vue'
+import { ElMessageBox } from 'element-plus'
 export default {
   setup() {
     let store = useStore()
+    let router = useRouter()
     // 动态引入用户头像（svg格式）
     const getImgSrc = user => new URL(`../assets/${user}.svg`, import.meta.url).href
     // 定义按钮点击事件回调
@@ -44,7 +47,29 @@ export default {
     const current = computed(() => {
       return store.state.currentMenu
     })
-    return { getImgSrc, hideSidebar, current }
+
+    // 定义登出点击事件
+    const logoutHandler = () => {
+      ElMessageBox.confirm('确定退出登录吗?')
+        .then(() => {
+          // 提交mutation进行登出后的数据重置
+          store.commit('isLogout')
+          // 跳转至登录页
+          router.push({
+            name: 'login'
+          })
+        })
+        .catch(() => {
+          // catch error
+        })
+    }
+
+    return {
+      getImgSrc,
+      hideSidebar,
+      current,
+      logoutHandler
+    }
   }
 }
 </script>

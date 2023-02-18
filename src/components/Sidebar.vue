@@ -39,46 +39,19 @@ import { useStore } from 'vuex'
 
 export default {
   setup() {
-    // 定义菜单结构
-    const sidebarList = [
-      {
-        path: '/user',
-        name: 'user',
-        label: '用户管理',
-        icon: 'UserFilled',
-        url: 'UserManage/UserManage'
-      },
-      {
-        path: '/other',
-        label: '其他',
-        icon: 'MoreFilled',
-        children: [
-          {
-            path: '/page1',
-            name: 'page1',
-            label: '页面1',
-            icon: 'setting',
-            url: 'Other/PageOne'
-          },
-          {
-            path: '/page2',
-            name: 'page2',
-            label: '页面2',
-            icon: 'setting',
-            url: 'Other/PageTwo'
-          }
-        ]
-      }
-    ]
-
-    // 通过有无二级菜单判断菜单级别
-    const noChildren = () => sidebarList.filter(item => !item.children)
-    const hasChildren = () => sidebarList.filter(item => item.children)
-
     // 引入router方法
     const router = useRouter()
     // 引入vuex方法
     const store = useStore()
+
+    // 由登陆者权限决定菜单结构，通过vuex获取
+    // 碍于vuex刷新页面后数据会丢失，因此先在根组件中通过mutation读取本地菜单数据
+    // 本地没有数据则读取通过登录存储在state的数据，该数据同时已存储至本地，因此此时刷新就不会丢失
+    const sidebarList = store.state.sidebarMenu
+
+    // 通过有无二级菜单判断菜单级别
+    const noChildren = () => sidebarList.filter(item => !item.children)
+    const hasChildren = () => sidebarList.filter(item => item.children)
 
     // 定义点击菜单点击事件回调
     const clickMenu = item => {
@@ -86,7 +59,7 @@ export default {
         name: item.name // 跳转路由名称
       })
       // 通过Vuex管理以实现面包屑
-      store.commit('selectSidebarMenu',item)
+      store.commit('selectSidebarMenu', item)
     }
     return {
       noChildren,

@@ -1,0 +1,80 @@
+name: Deploy Project
+
+on:
+  push:
+    branches:
+      # 指定通过push触发工作流时的分支
+      - master
+
+jobs:
+  deploy-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build project
+        env:
+          NODE_OPTIONS: --max_old_space_size=8192
+        run: |-
+          npm run build
+          > dist/.nojekyll
+
+      - name: Copy LICENSE
+        uses: canastro/copy-file-action@master
+        with:
+          # 源文件目录
+          source: LICENSE
+          # 目标目录
+          target: dist
+
+      - name: Copy README.md
+        uses: canastro/copy-file-action@master
+        with:
+          # 源文件目录
+          source: README.md
+          # 目标目录
+          target: dist
+
+      - name: Deploy project
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # 项目部署到的远程仓库分支名称
+          branch: gh-pages
+          # 所部署项目的目录
+          folder: dist
+
+      - name: Sync repo to Gitee
+        uses: wearerequired/git-mirror-action@v1
+        env:
+          # 在 仓库->Settings->Secrets->Actions 配置私钥，供actions访问github和gitee仓库
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_ED25519_PRIVATE_KEY }}
+        with:
+          # 注意替换为你的 GitHub 源仓库地址
+          source-repo: git@github.com:Wu-JunHui/backstage.git
+          # 注意替换为你的 Gitee 目标仓库地址
+          destination-repo: git@gitee.com:W-JunHui/backstage.git
+
+      - name: Build Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          # 注意替换为你的 Gitee 用户名
+          gitee-username: W-JunHui
+          # 在 GitHub->Settings->Secrets->Actions 配置 GITEE_PASSWORD
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          # 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错
+          gitee-repo: W-JunHui/backstage
+          # 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）
+          branch: gh-pages
+

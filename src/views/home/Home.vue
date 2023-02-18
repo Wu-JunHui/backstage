@@ -6,7 +6,7 @@
       <el-card class="user-container" shadow="hover">
         <!-- 上侧 -->
         <div class="user-info">
-          <img src="../assets/defaultUser.svg" alt="默认头像" />
+          <img src="../../assets/defaultUser.svg" alt="默认头像" />
           <div class="user-details">
             <div class="name"><span>用户名：</span> Administrator</div>
             <div class="role"><span>角色：</span> 管理员</div>
@@ -194,7 +194,6 @@ export default defineComponent({
       ordersEcharts.setOption(commonOptions)
 
       // 二、处理柱状图
-      console.log(user)
       // 1.定义柱状图的路径图数组
       const userSeries = [
         {
