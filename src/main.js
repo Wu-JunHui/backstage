@@ -38,9 +38,4 @@ store.commit('loadLocalMenu', router)
 // 注册路由模块
 app.use(router).use(store)
 app.mount('#app')
-// import { setupProdMockServer } from 'vite-plugin-mock'
-// if (process.env.NODE_ENV === 'production') {
-//   setupProdMockServer()
-// }
-import { setupProdMockServer } from './mockProdServer';
-setupProdMockServer()
+
