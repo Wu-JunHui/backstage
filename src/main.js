@@ -16,9 +16,10 @@ import api from './api/api'
 // 导入vue-cookies
 import VueCookies from 'vue-cookies'
 import App from './App.vue'
+import mock from 'mockjs'
 
 const app = createApp(App)
-
+app.use(mock)
 // 暴露axios为全局属性$http
 app.config.globalProperties.$api = api
 // 暴露VueCookies为全局属性$cookies
@@ -38,4 +39,3 @@ store.commit('loadLocalMenu', router)
 // 注册路由模块
 app.use(router).use(store)
 app.mount('#app')
-
