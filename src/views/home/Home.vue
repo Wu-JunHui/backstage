@@ -159,7 +159,7 @@ export default defineComponent({
       series: []
     })
 
-   // 获取图表源数据
+    // 获取图表源数据
     const getEchartsData = async () => {
       let res = await proxy.$api.getEchartsData()
       let orders = res.ordersData //折线图数据需进一步处理
@@ -234,7 +234,9 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      getTableList(), getCountData(), getEchartsData()
+      setTimeout(() => {
+        getTableList(), getCountData(), getEchartsData()
+      }, 3000)
     })
     return {
       tableData,
@@ -358,7 +360,7 @@ export default defineComponent({
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  .el-card{
+  .el-card {
     width: 48%;
   }
   // .el-card {
