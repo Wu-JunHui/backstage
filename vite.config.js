@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     vue(),
     viteMockServe({
-      mockPath: 'src/api/mock.js', //mock文件存储目录
+      mockPath: 'src/api/mock', //mock文件存储目录
       localEnabled: true, //是否启用本地mock文件
       prodEnabled: true, //打包是否启用 mock 功能
       watchFiles: true, //是否监视mockPath对应的文件夹内文件中的更改
