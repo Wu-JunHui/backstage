@@ -16,8 +16,7 @@ import api from './api/api'
 // 导入vue-cookies
 import VueCookies from 'vue-cookies'
 import App from './App.vue'
-import { setupProdMockServer } from './mockProdServer'
-setupProdMockServer()
+
 
 const app = createApp(App)
 
@@ -40,3 +39,5 @@ store.commit('loadLocalMenu', router)
 // 注册路由模块
 app.use(router).use(store)
 app.mount('#app')
+import { setupProdMockServer } from './mockProdServer'
+setupProdMockServer()
