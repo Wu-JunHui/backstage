@@ -14,9 +14,9 @@ const EnvConfig = {
     baseApi: '/test.com/api',
     mockApi: 'https://www.fastmock.site/mock/faa967e1e23a267ad0745b2556a9b204/api' // fastmock接口根地址
   },
-  // 线上环境（为不存在的模拟接口，需与后端对接）
+  // 线上环境（当前因部署为静态项目，直接使用fastmock）
   pro: {
-    baseApi: '/pro.com/api',
+    baseApi: 'https://www.fastmock.site/mock/faa967e1e23a267ad0745b2556a9b204/api',
     mockApi: 'https://www.fastmock.site/mock/faa967e1e23a267ad0745b2556a9b204/api' // fastmock接口根地址
   }
 }
