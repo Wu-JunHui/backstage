@@ -17,7 +17,6 @@ import api from './api/api'
 import VueCookies from 'vue-cookies'
 import App from './App.vue'
 
-
 const app = createApp(App)
 
 // 暴露axios为全局属性$http
@@ -39,4 +38,9 @@ store.commit('loadLocalMenu', router)
 // 注册路由模块
 app.use(router).use(store)
 app.mount('#app')
-
+// import { setupProdMockServer } from 'vite-plugin-mock'
+// if (process.env.NODE_ENV === 'production') {
+//   setupProdMockServer()
+// }
+import { setupProdMockServer } from './mockProdServer';
+setupProdMockServer()
