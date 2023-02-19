@@ -19,11 +19,11 @@ const routes = [
         name: 'mall',
         component: () => import('../views/mall/Mall.vue')
       },
-      // {
-      //   path: '/user',
-      //   name: 'user',
-      //   component: () => import('../views/user/User.vue')
-      // },
+      {
+        path: '/user',
+        name: 'user',
+        component: () => import('../views/users/User.vue')
+      },
       {
         path: '/other',
         name: 'other',
@@ -31,12 +31,12 @@ const routes = [
           {
             path: '/page1',
             name: 'page1',
-            component: () => import('../views/users/User.vue')
+            component: () => import('../views/others/Page1.vue')
           },
           {
             path: '/page2',
             name: 'page2',
-            component: () => import('../views/other/Page2.vue')
+            component: () => import('../views/others/Page2.vue')
           }
         ]
       }
