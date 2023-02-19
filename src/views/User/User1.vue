@@ -1,0 +1,3 @@
+<template>
+  Fuuuuuuuuuuck you!
+</template>

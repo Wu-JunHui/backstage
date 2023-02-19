@@ -31,7 +31,7 @@ export default {
               name: 'user',
               label: '用户管理',
               icon: 'user',
-              url: 'user/User'
+              url: 'user/User1'
             },
             {
               label: '其他',

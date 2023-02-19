@@ -20,7 +20,7 @@ export default defineConfig({
     //   logger: true //是否在控制台显示请求日志
     // })
   ],
-  build: {
-    target: ['es2020']
-  }
+  // build: {
+  //   target: ['es2020']
+  // }
 })
