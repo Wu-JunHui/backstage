@@ -17,7 +17,7 @@ import api from './api/api'
 import App from './App.vue'
 
 const app = createApp(App)
-// app.use(mock)
+
 // 暴露axios为全局属性$http
 app.config.globalProperties.$api = api
 
@@ -31,7 +31,9 @@ app.use(ElementPlus)
 
 // 持久化侧边栏菜单数据并在挂载路由模块前设置动态路由
 store.commit('loadLocalMenu', router)
-
 // 注册路由模块
 app.use(router).use(store)
+
+
+
 app.mount('#app')
