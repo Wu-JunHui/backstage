@@ -67,10 +67,11 @@ export default createStore({
         // 定义接收home路由下的动态路由对象的数组
         const dynRoute = []
         // 定义动态导入模块(vite语法)
-        const modules = import.meta.glob('../views/*/*.vue')
+        const modules = import.meta.glob('../views/**/*.vue')
 
         // 根据menu中的路径设置动态路由
         menu.forEach(item => {
+           
           // 如果存在子路由children数组，则为其添加展示组件
           if (item.children) {
             item.children = item.children.map(ele => {
@@ -97,6 +98,8 @@ console.log(dynRoute);
         dynRoute.forEach(item => {
           router.addRoute('root', item)
         })
+console.log(router);
+
       }
     },
 

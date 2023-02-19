@@ -57,9 +57,9 @@ export default {
 .tag-container {
   margin-bottom: 15px;
 
-  cursor: pointer;
   .el-tag {
     margin-right: 10px;
+    cursor: pointer;
   }
 }
 </style>
