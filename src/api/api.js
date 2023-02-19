@@ -2,27 +2,26 @@
 
 import request from './request'
 export default {
-  // 定义Home组件获取table数据的请求函数，传入一个请求参数对象
+  // 定义Home组件获取table数据的请求函数
   getTableData(params) {
     return request({
       url: '/home/getTableData',
       method: 'get',
-      data: params,
-      mock: true
+      mock: false
     })
   },
   getCountData() {
     return request({
       url: '/home/getCountData',
       method: 'get',
-      mock: true
+      mock: false
     })
   },
   getEchartsData() {
     return request({
       url: '/home/getEchartsData',
       method: 'get',
-      mock: true
+      mock: false
     })
   },
   getUserData(params) {

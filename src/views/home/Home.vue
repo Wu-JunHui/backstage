@@ -169,6 +169,7 @@ export default defineComponent({
       // 一、处理折线图
       // 1.遍历orders对象中的data数组，将每个数组元素（对象）的第一个键值输出为数组
       const keyArray = Object.keys(orders.data[0])
+
       // 2.遍历keyArray，将每个数组元素封装为一个对象，组装series数组
       const lineSeries = []
       keyArray.forEach(key => {
@@ -179,6 +180,7 @@ export default defineComponent({
           type: 'line' // 选择使用折线图
         })
       })
+
       // 3.将遍历出的路径图数组赋值给通用配置对象对应项
       commonOptions.series = lineSeries
       // 4.将orders对象的date数组用于折线图的x轴
