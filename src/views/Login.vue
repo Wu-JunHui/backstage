@@ -36,7 +36,7 @@ export default {
       // 登录成功，将其权限对应的菜单通过vuex加载并存储到本地
       store.commit('setSidebarMenu', res.menu)
       // 设置动态路由，传入全局路由对象以添加动态路由
-      store.commit('loadLocalMenu')
+      store.commit('loadLocalMenu', router)
       // 保存登录token
       store.commit('saveToken',res.token)
 

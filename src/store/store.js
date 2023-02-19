@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import VueCookies from 'vue-cookies'
-import router from '../router/router.js'
+
 export default createStore({
   state: {
     barCollapse: false,
@@ -55,7 +55,7 @@ export default createStore({
 
     // 持久化并加载已在本地存储的菜单数据，设置动态路由
     // 调用者：Login.vue，main.js（因为在根组件中设置动态路由时，组件已渲染完毕，会产生白屏，因此需在挂载路由前设置好动态路由）
-    loadLocalMenu(state) {
+    loadLocalMenu(state, router) {
       // router接收调用者传入的路由对象
       // 判断是否存在本地菜单数据
       if (localStorage.getItem('menu')) {
@@ -93,7 +93,6 @@ export default createStore({
           }
         })
 
-        // const router = useRouter()
         // 则此时dynamicRoute数组已获取所有动态路由对象，将它们添加到路由root中
         dynRoute.forEach(item => {
           router.addRoute('root', item)
