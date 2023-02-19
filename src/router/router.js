@@ -9,11 +9,11 @@ const routes = [
     name: 'root',
     redirect: '/home',
     children: [
-      {
-        path:'/user',
-        name:'name',
-        component:() => import('../views/user/User.vue')
-      }
+      // {
+      //   path:'/user',
+      //   name:'name',
+      //   component:() => import('../views/user/User.vue')
+      // }
     ] // 为动态路由，在登录后返回menu数据，在vuex中处理menu中的url后进行添加
   },
   {

@@ -92,7 +92,7 @@ export default createStore({
             dynRoute.push(item)
           }
         })
-
+console.log(dynRoute);
         // 则此时dynamicRoute数组已获取所有动态路由对象，将它们添加到路由root中
         dynRoute.forEach(item => {
           router.addRoute('root', item)

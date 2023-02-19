@@ -88,9 +88,6 @@ import { ElMessageBox, ElMessage } from 'element-plus'
 export default defineComponent({
   setup() {
     const { proxy } = getCurrentInstance()
-    onMounted(() => {
-      getUserData(paramConfig)
-    })
 
     // 定义表头循环数组
     const tableHead = reactive([
@@ -280,6 +277,11 @@ export default defineComponent({
           // catch error
         })
     }
+    
+    onMounted(() => {
+      getUserData(paramConfig)
+    })
+
     return {
       userData,
       tableHead,
