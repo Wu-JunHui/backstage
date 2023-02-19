@@ -69,42 +69,42 @@ export default createStore({
         // 固使用固定路由，暂不设置动态路由
 
       
-        // const dynRoute = []
-        // // 定义动态导入模块(vite语法)
-        // const modules = import.meta.glob('../views/**/**.vue')
+        const dynRoute = []
+        // 定义动态导入模块(vite语法)
+        const modules = import.meta.glob('../views/*/*.vue')
 
-        // // 根据menu中的路径设置动态路由
-        // menu.forEach(item => {
+        // 根据menu中的路径设置动态路由
+        menu.forEach(item => {
            
-        //   // 如果存在子路由children数组，则为其添加展示组件
-        //   if (item.children) {
-        //     item.children = item.children.map(ele => {
-        //       // 注意该url将在router.js中使用，因此因相对于router.js设置
-        //       // 展示组件引入路径基于后端返回的数据menu对象数组中的url属性
-        //       let url = `../views/${ele.url}`
-        //       // 为children下的对象添加新属性
-        //       ele.component = modules[url]
-        //       return ele
-        //     })
-        //     // 将添加了展示组件的子路由数组的每个对象push进动态路由数组
-        //     dynRoute.push(...item.children)
-        //   } else {
-        //     // 不存在子路由
-        //     let url = `../views/${item.url}`
-        //     // 直接为其添加新属性
-        //     item.component = modules[url]
-        //     // 同样与动态路由数组合并
-        //     dynRoute.push(item)
-        //   }
-        // })
-        // // 则此时dynamicRoute数组已获取所有动态路由对象，将它们添加到路由root中
-        // dynRoute.forEach(item => {
-        //   router.addRoute('root', item)
-        // })
-        
+          // 如果存在子路由children数组，则为其添加展示组件
+          if (item.children) {
+            item.children = item.children.map(ele => {
+              // 注意该url将在router.js中使用，因此因相对于router.js设置
+              // 展示组件引入路径基于后端返回的数据menu对象数组中的url属性
+              let url = `../views/${ele.url}.vue`
+              // 为children下的对象添加新属性
+              ele.component = modules[url]
+              return ele
+            })
+            // 将添加了展示组件的子路由数组的每个对象push进动态路由数组
+            dynRoute.push(...item.children)
+          } else {
+            // 不存在子路由
+            let url = `../views/${item.url}.vue`
+            // 直接为其添加新属性
+            item.component = modules[url]
+            // 同样与动态路由数组合并
+            dynRoute.push(item)
+          }
+        })
+        // 则此时dynamicRoute数组已获取所有动态路由对象，将它们添加到路由root中
+        dynRoute.forEach(item => {
+          router.addRoute('root', item)
+        })
       }
     },
 
+    
     // 保存登录token认证
     saveToken(state, token) {
       state.token = token

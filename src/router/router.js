@@ -9,37 +9,37 @@ const routes = [
     name: 'root',
     redirect: '/home',
     children: [
-      {
-        path: '/home',
-        name: 'home',
-        component: () => import('../views/home/Home.vue')
-      },
-      {
-        path: '/mall',
-        name: 'mall',
-        component: () => import('../views/mall/Mall.vue')
-      },
-      {
-        path: '/user',
-        name: 'user',
-        component: () => import('../views/users/User.vue')
-      },
-      {
-        path: '/other',
-        name: 'other',
-        children: [
-          {
-            path: '/page1',
-            name: 'page1',
-            component: () => import('../views/others/Page1.vue')
-          },
-          {
-            path: '/page2',
-            name: 'page2',
-            component: () => import('../views/others/Page2.vue')
-          }
-        ]
-      }
+      // {
+      //   path: '/home',
+      //   name: 'home',
+      //   component: () => import('../views/home/Home.vue')
+      // },
+      // {
+      //   path: '/mall',
+      //   name: 'mall',
+      //   component: () => import('../views/mall/Mall.vue')
+      // },
+      // {
+      //   path: '/user',
+      //   name: 'user',
+      //   component: () => import('../views/users/User.vue')
+      // },
+      // {
+      //   path: '/other',
+      //   name: 'other',
+      //   children: [
+      //     {
+      //       path: '/page1',
+      //       name: 'page1',
+      //       component: () => import('../views/others/Page1.vue')
+      //     },
+      //     {
+      //       path: '/page2',
+      //       name: 'page2',
+      //       component: () => import('../views/others/Page2.vue')
+      //     }
+      //   ]
+      // }
     ] // 为动态路由，在登录后返回menu数据，在vuex中处理menu中的url后进行添加
   },
   {
