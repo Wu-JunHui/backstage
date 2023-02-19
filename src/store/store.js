@@ -67,7 +67,7 @@ export default createStore({
         // 定义接收home路由下的动态路由对象的数组
         const dynRoute = []
         // 定义动态导入模块(vite语法)
-        const modules = import.meta.glob('../views/**/*.vue')
+        const modules = import.meta.glob('../views/*/*.vue')
 
         // 根据menu中的路径设置动态路由
         menu.forEach(item => {
