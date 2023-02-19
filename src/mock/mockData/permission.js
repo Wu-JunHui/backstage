@@ -17,21 +17,21 @@ export default {
               name: 'home',
               label: '首页',
               icon: 'house',
-              url: 'home/Home'
+              url: 'home/Home.vue'
             },
             {
               path: '/mall',
               name: 'mall',
               label: '商品管理',
               icon: 'video-play',
-              url: 'mall/Mall'
+              url: 'mall/Mall.vue'
             },
             {
               path: '/user',
               name: 'user',
               label: '用户管理',
               icon: 'user',
-              url: 'user/User1'
+              url: 'user/User.vue'
             },
             {
               label: '其他',
@@ -42,14 +42,14 @@ export default {
                   name: 'page1',
                   label: '页面1',
                   icon: 'setting',
-                  url: 'other/Page1'
+                  url: 'other/Page1.vue'
                 },
                 {
                   path: '/page2',
                   name: 'page2',
                   label: '页面2',
                   icon: 'setting',
-                  url: 'other/Page2'
+                  url: 'other/Page2.vue'
                 }
               ]
             }
