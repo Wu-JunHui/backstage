@@ -31,7 +31,7 @@ const routes = [
           {
             path: '/page1',
             name: 'page1',
-            component: () => import('/src/views/other/Page1.vue')
+            component: () => import('./src/views/other/Page1.vue')
           },
           {
             path: '/page2',
