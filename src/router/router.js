@@ -19,11 +19,11 @@ const routes = [
         name: 'mall',
         component: () => import('../views/mall/Mall.vue')
       },
-      {
-        path: '/user',
-        name: 'user',
-        component: () => import('../views/user/User.vue')
-      },
+      // {
+      //   path: '/user',
+      //   name: 'user',
+      //   component: () => import('../views/user/User.vue')
+      // },
       {
         path: '/other',
         name: 'other',
