@@ -18,6 +18,7 @@ export default createStore({
     token: ''
   },
   mutations: {
+    // 控制侧边栏折叠
     updateBarCollapse(state, payload) {
       state.barCollapse = !state.barCollapse
     },

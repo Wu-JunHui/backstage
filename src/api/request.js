@@ -17,7 +17,7 @@ service.interceptors.request.use(request => {
   return request
 })
 
-// 在请求之前做一些事情，即设置响应拦截器
+// 在请求之后做一些事情，即设置响应拦截器
 
 service.interceptors.response.use(response => {
   // 解构赋值全局请求回来的数据，减少数据嵌套，方便赋值
@@ -61,7 +61,7 @@ function request(options) {
   // 对线上环境的处理
   if (config.env === 'prod') {
     // 若为线上环境，则修改请求根路径为线上环境所配置的路径，杜绝使用mock
-    service.defaults.baseURL = config.mockApi
+    service.defaults.baseURL = config.baseApi
   } else {
     // 若为非线上，则依据前面获取的isMock判断是否使用mockApi
     service.defaults.baseURL = isMock ? config.mockApi : config.baseApi

@@ -6,7 +6,7 @@ const env = import.meta.env.MODE || 'prod'
 const EnvConfig = {
   // 开发环境
   development: {
-    baseApi: '/api',
+    baseApi: '/',
     mockApi: 'https://www.fastmock.site/mock/faa967e1e23a267ad0745b2556a9b204/api' // fastmock接口根地址
   },
   // 测试环境（为不存在的模拟接口，需与后端对接）

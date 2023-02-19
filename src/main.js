@@ -13,17 +13,13 @@ import store from './store/store.js'
 import './mock/mock.js'
 // 导入已封装好的全局接口管理模块api.js
 import api from './api/api'
-// 导入vue-cookies
-import VueCookies from 'vue-cookies'
+// import mock from './mock/mock.js'
 import App from './App.vue'
-import mock from 'mockjs'
 
 const app = createApp(App)
-app.use(mock)
+// app.use(mock)
 // 暴露axios为全局属性$http
 app.config.globalProperties.$api = api
-// 暴露VueCookies为全局属性$cookies
-app.config.globalProperties.$cookies = VueCookies
 
 // 注册Element-Plus图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

@@ -2,7 +2,7 @@
   <el-header class="header-container">
     <!-- 标题左侧 -->
     <div class="h-left">
-      <el-button size="small" color="#e3d9d0" :dark="isDark" title="隐藏菜单" @click="hideSidebar">
+      <el-button size="small" color="#e3d9d0" :title="$store.state.barCollapse ? '显示菜单' : '折叠菜单'" @click="hideSidebar">
         <el-icon :size="18" color="#2cb2c2"><Menu /></el-icon
       ></el-button>
       <el-breadcrumb separator="/" class="bread">

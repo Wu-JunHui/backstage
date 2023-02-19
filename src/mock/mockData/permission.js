@@ -64,19 +64,19 @@ export default {
         data: {
           menu: [
             {
-              path: '/',
+              path: '/home',
               name: 'home',
               label: '首页',
-              icon: 's-home',
-              url: 'home/index'
+              icon: 'house',
+              url: 'home/Home'
             },
             {
-              path: '/video',
-              name: 'video',
+              path: '/mall',
+              name: 'mall',
               label: '商品管理',
               icon: 'video-play',
-              url: 'mall/index'
-            }
+              url: 'mall/Mall'
+            },
           ],
           token: Mock.Random.guid(),
           message: '登录成功！'
@@ -84,7 +84,7 @@ export default {
       }
     } else {
       return {
-        code: -999,
+        code: 200,
         data: {
           message: '登录名或密码错误，请重试'
         }
