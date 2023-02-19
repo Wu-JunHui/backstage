@@ -86,6 +86,12 @@ import { defineComponent, getCurrentInstance, onMounted, reactive, ref } from 'v
 import { ElMessageBox, ElMessage } from 'element-plus'
 
 export default defineComponent({
+  // 路由组件名称
+  name: 'user',
+  // 是否自动为路由
+  isRouter: true,
+  // 是否自动注册为公共组件
+  isComponent: false,
   setup() {
     const { proxy } = getCurrentInstance()
 
@@ -277,7 +283,7 @@ export default defineComponent({
           // catch error
         })
     }
-    
+
     onMounted(() => {
       getUserData(paramConfig)
     })
