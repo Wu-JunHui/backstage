@@ -8,7 +8,7 @@
       <img src="../assets/mobileTips.svg" alt="mobile" />
       <p>
         抱歉，该系统暂未进行移动端适配<br />请在PC端打开<br />
-        https://W-Junhui.gitee.io/backstage
+        https://w-junhui.gitee.io/backstage
       </p>
     </div>
     <div class="m_authoer">Made with ❤️ by <a href="https://github.com/Wu-JunHui/" target="_blank">Wu-JunHui</a></div>

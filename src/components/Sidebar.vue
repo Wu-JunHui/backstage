@@ -1,5 +1,5 @@
 <template>
-  <el-menu class="el-menu-vertical-demo" :collapse="$store.state.barCollapse" text-color="#fff" active-text-color="#2cb2c2" background-color="#3b3c3d" :default-active="$store.state.currentMenu ? $store.state.currentMenu.path : '/home'">
+  <el-menu class="el-menu-vertical-demo" :collapse="$store.state.barCollapse" :collapse-transition="false" text-color="#fff" active-text-color="#2cb2c2" background-color="#3b3c3d" :default-active="$store.state.currentMenu ? $store.state.currentMenu.path : '/home'">
     <!-- logo区域 -->
     <div class="logo">
       <img src="../assets/logoDark.svg" alt="logo" />
@@ -30,6 +30,13 @@
         </el-menu-item>
       </el-menu-item-group>
     </el-sub-menu>
+    <!-- 作者 -->
+    <div class="copyRight">
+      <a href="https://github.com/Wu-JunHui/backstage" target="_blank">
+        <img src="../assets/github.svg" alt="github" />
+      </a>
+      <div class="authorInfo" v-if="!$store.state.barCollapse">Made with ❤️ by <br /><a href="https://github.com/Wu-JunHui/" target="_blank">Wu-JunHui</a></div>
+    </div>
   </el-menu>
 </template>
 
@@ -64,7 +71,7 @@ export default {
     return {
       noChildren,
       hasChildren,
-      clickMenu,
+      clickMenu
     }
   }
 }
@@ -72,6 +79,7 @@ export default {
 
 <style lang="scss">
 .el-menu {
+  position: relative;
   border-right: none;
   span {
     padding: 0 30px 0 10px;
@@ -97,5 +105,32 @@ export default {
 
 .icons {
   width: 18px;
+}
+
+// 作者
+.copyRight {
+  position: absolute;
+  bottom: 20px;
+  left: 2px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
+  img {
+    margin-left: 5px;
+    width: 50px;
+  }
+  .authorInfo {
+    cursor: default;
+    white-space: nowrap;
+
+    a {
+      color: #2cb2c2;
+    }
+    a:hover {
+      color: #5bb2bc;
+    }
+  }
 }
 </style>
