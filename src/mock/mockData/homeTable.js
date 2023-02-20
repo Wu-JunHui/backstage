@@ -4,34 +4,34 @@ export default {
       code: 200,
       data: [
         {
-          name: 'oppo',
-          todayBuy: 500,
-          montuBuy: 3500,
-          totalBuy: 2400
-        },
-        {
-          name: 'vivo',
-          todayBuy: 500,
-          montuBuy: 3500,
-          totalBuy: 2400
-        },
-        {
           name: 'Apple',
-          todayBuy: 500,
-          montuBuy: 3500,
-          totalBuy: 2400
+          todayBuy: 354,
+          montuBuy: 361,
+          totalBuy: 8000
         },
         {
           name: 'HUAWEI',
-          todayBuy: 500,
-          montuBuy: 3500,
-          totalBuy: 2400
+          todayBuy: 432,
+          montuBuy: 354,
+          totalBuy: 7800
         },
         {
-          name: 'XiaoMI',
-          todayBuy: 500,
-          montuBuy: 3500,
-          totalBuy: 2400
+          name: 'vivo',
+          todayBuy: 564,
+          montuBuy: 212,
+          totalBuy: 6800
+        },
+        {
+          name: 'XiaoMi',
+          todayBuy: 254,
+          montuBuy: 564,
+          totalBuy: 6500
+        },
+        {
+          name: 'SAMSUNG',
+          todayBuy: 354,
+          montuBuy: 315,
+          totalBuy: 4000
         }
       ]
     }

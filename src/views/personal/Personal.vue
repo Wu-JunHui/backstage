@@ -1,24 +1,24 @@
 <template>
-  <div class="pageOne-container">
-    <h2>页面1演示</h2>
-    <Vue3Lottie :animationData="PageOneJSON" :width="550" :height="550" />
+  <div class="personal-container">
+    <h2>个人中心页演示</h2>
+    <Vue3Lottie :animationData="PersonalJSON" :width="550" :height="550" />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import PageOneJSON from '../../assets/page1.json'
+import PersonalJSON from '../../assets/personal.json'
 export default defineComponent({
   setup() {
     return {
-      PageOneJSON
+      PersonalJSON
     }
   }
 })
 </script>
 
 <style lang="scss">
-.pageOne-container {
+.personal-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +28,6 @@ export default defineComponent({
     color: #2cb2c2;
     font-size: 50px;
     letter-spacing: 20px;
-
   }
 }
 </style>

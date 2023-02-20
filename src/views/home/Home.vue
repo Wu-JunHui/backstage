@@ -8,8 +8,8 @@
         <div class="user-info">
           <img src="../../assets/defaultUser.svg" alt="默认头像" />
           <div class="user-details">
-            <div class="name"><span>用户名：</span> Administrator</div>
-            <div class="role"><span>角色：</span> 管理员</div>
+            <div class="name"><span>用户名：</span> {{ $store.state.userInfo.username }}</div>
+            <div class="role"><span>角色：</span> {{ $store.state.userInfo.isAdmin ? '管理员' : '普通成员' }}</div>
           </div>
         </div>
         <!-- 下侧 -->
@@ -21,8 +21,8 @@
 
       <!-- table信息 -->
       <el-card class="bottomLeft-container" shadow="hover">
-        <el-table :data="tableData">
-          <el-table-column v-for="(item, index) in tableLabel" :key="index" :prop="index" :label="item"> </el-table-column>
+        <el-table :data="tableData" stripe border align="center">
+          <el-table-column v-for="(item, index) in tableLabel" :key="index" :prop="index" :label="item" align="center"> </el-table-column>
         </el-table>
       </el-card>
     </el-col>
@@ -38,7 +38,7 @@
           </div>
           <!-- 单项右侧信息 -->
           <div class="info-container">
-            <div class="price"><span>￥</span>{{ item.value }}</div>
+            <div class="price">{{ item.value }}</div>
             <div class="description">{{ item.name }}</div>
           </div>
         </el-card>
@@ -76,10 +76,10 @@ export default defineComponent({
     // 定义接收count数据的数组
     let countData = ref([])
     const tableLabel = {
-      name: '课程',
+      name: '品牌',
       todayBuy: '今日购买',
       montuBuy: '本月购买',
-      totalBuy: '总共购买'
+      totalBuy: '总计(台)'
     }
     // 获取table数据
     const getTableList = async () => {
@@ -159,7 +159,7 @@ export default defineComponent({
       series: []
     })
 
-   // 获取图表源数据
+    // 获取图表源数据
     const getEchartsData = async () => {
       let res = await proxy.$api.getEchartsData()
       let orders = res.ordersData //折线图数据需进一步处理
@@ -302,7 +302,7 @@ export default defineComponent({
   justify-content: space-between;
   .el-card {
     margin-bottom: 15px;
-    width: 30%;
+    width: 23%;
     border-radius: 10px;
     .el-card__body {
       padding: 0;
@@ -327,8 +327,8 @@ export default defineComponent({
         align-items: center;
         // text-align: center;
         .description {
-          margin-top: 5px;
-          color: #ccc;
+          margin-top: 8px;
+          color: #a7a7a7;
           font-size: 14px;
         }
         .price {
@@ -360,7 +360,7 @@ export default defineComponent({
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  .el-card{
+  .el-card {
     width: 48%;
   }
   // .el-card {

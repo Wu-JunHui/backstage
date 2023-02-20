@@ -1,1 +1,29 @@
 @import './normalize.scss';
+.el-messageBox-confirm {
+  // color: #2cb2c2;
+  --el-button-bg-color: #2cb2c2 !important;
+  --el-button-border-color: #2cb2c2 !important;
+  --el-button-outline-color: #9ec4c8 !important;
+
+  --el-button-hover-bg-color: #70bfca !important;
+  --el-button-hover-border-color: #70bfca !important;
+  // 按钮激活样式
+  --el-button-active-bg-color: #1cb8cd !important;
+  --el-button-active-border-color: #1cb8cd !important;
+}
+
+.el-messageBox-cancel {
+  // color: #2cb2c2;
+  // --el-button-bg-color:#2cb2c2!important;
+  // --el-button-border-color: #2cb2c2!important;
+  --el-button-outline-color: #9ec4c8 !important;
+  --el-button-hover-text-color: #a8abb2 !important;
+
+  --el-button-hover-bg-color: #c5eaea !important;
+  --el-button-hover-border-color: #70bfca !important;
+  // 按钮激活样式
+  --el-button-active-text-color: #000 !important;
+  --el-button-active-bg-color: #d7f5f9 !important;
+  --el-button-active-border-color: #1cb8cd !important;
+}
+

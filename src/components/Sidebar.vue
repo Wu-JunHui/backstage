@@ -1,8 +1,8 @@
 <template>
-  <el-menu class="el-menu-vertical-demo" :collapse="$store.state.barCollapse" text-color="#fff" active-text-color="#2cb2c2" background-color="#3b3c3d">
+  <el-menu class="el-menu-vertical-demo" :collapse="$store.state.barCollapse" text-color="#fff" active-text-color="#2cb2c2" background-color="#3b3c3d" :default-active="$store.state.currentMenu ? $store.state.currentMenu.path : '/home'">
     <!-- logo区域 -->
     <div class="logo">
-      <img src="../assets/logoDark.svg" alt="" />
+      <img src="../assets/logoDark.svg" alt="logo" />
       <h3 v-if="!$store.state.barCollapse">后台管理系统</h3>
     </div>
 
@@ -64,7 +64,7 @@ export default {
     return {
       noChildren,
       hasChildren,
-      clickMenu
+      clickMenu,
     }
   }
 }

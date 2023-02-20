@@ -19,7 +19,7 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>个人中心</el-dropdown-item>
+            <el-dropdown-item @click="personHandler">个人中心</el-dropdown-item>
             <el-dropdown-item @click="logoutHandler">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -31,8 +31,9 @@
 <script>
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import { computed } from 'vue'
+import { computed, markRaw } from 'vue'
 import { ElMessageBox } from 'element-plus'
+import { Warning } from '@element-plus/icons-vue'
 export default {
   setup() {
     let store = useStore()
@@ -48,9 +49,16 @@ export default {
       return store.state.currentMenu
     })
 
-    // 定义登出点击事件
+    // 定义登出点击事件回调
     const logoutHandler = () => {
-      ElMessageBox.confirm('确定退出登录吗?')
+      ElMessageBox.confirm('确定退出登录吗?', '提示', {
+        type: 'warning',
+        icon: markRaw(Warning),
+        cancelButtonText: '取消',
+        confirmButtonText: '确定',
+        confirmButtonClass: 'el-messageBox-confirm',
+        cancelButtonClass: 'el-messageBox-cancel'
+      })
         .then(() => {
           // 提交mutation进行登出后的数据重置
           store.commit('isLogout')
@@ -64,11 +72,19 @@ export default {
         })
     }
 
+    // 定义个人中心点击事件回调
+    const personHandler = () => {
+      router.push({
+        name: 'personal'
+      })
+    }
+
     return {
       getImgSrc,
       hideSidebar,
       current,
-      logoutHandler
+      logoutHandler,
+      personHandler
     }
   }
 }
@@ -97,6 +113,12 @@ export default {
       }
       span:hover {
         color: #2cb2c2;
+      }
+      .el-breadcrumb__item:last-child .el-breadcrumb__inner,
+      .el-breadcrumb__item:last-child .el-breadcrumb__inner a,
+      .el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
+      .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+        color: #2cb2c2 !important;
       }
     }
   }

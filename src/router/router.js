@@ -9,11 +9,11 @@ const routes = [
     name: 'root',
     redirect: '/home',
     children: [
-      // {
-      //   path: '/home',
-      //   name: 'home',
-      //   component: () => import('../views/home/Home.vue')
-      // },
+      {
+        path: '/personal',
+        name: 'personal',
+        component: () => import('../views/personal/Personal.vue')
+      },
       // {
       //   path: '/mall',
       //   name: 'mall',
@@ -58,7 +58,6 @@ const router = createRouter({
 function checkRouter(path) {
   // router.getRoutes()返回包含所有路由对象的数组
   let hadCheck = router.getRoutes().some(route => route.path === path)
-  // console.log(hadCheck)
   return hadCheck ? true : false
 }
 

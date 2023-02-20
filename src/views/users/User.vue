@@ -2,7 +2,7 @@
   <!-- 操作栏 -->
   <div class="action-contaienr">
     <!-- 左侧新增按钮 -->
-    <el-button type="primary" @click="addHandler">+新增</el-button>
+    <el-button type="primary" @click="addHandler" color="#2cb2c2">+ 新增</el-button>
     <!-- 右侧搜索功能 -->
     <el-form :inline="true" :model="formInline">
       <el-form-item>
@@ -10,21 +10,25 @@
       </el-form-item>
       <!-- 搜索按钮 -->
       <el-form-item>
-        <el-button type="primary" @click="searchHandler">搜索</el-button>
+        <el-button type="primary" @click="searchHandler" color="#2cb2c2">搜索</el-button>
       </el-form-item>
     </el-form>
   </div>
 
   <!-- 用户数据列表 -->
   <div class="table-container">
-    <el-table :data="userData" style="width: 100%" height="80vh">
+    <el-table :data="userData" style="width: 100%" height="75vh" align="center" stripe :header-row-style="{ color: '#2cb2c2', fontSize: 16 + 'px' }">
       <!-- 数据区 -->
-      <el-table-column v-for="item in tableHead" :key="item.prop" :label="item.label" :prop="item.prop" :width="item.width ? item.width : 125" />
+      <el-table-column v-for="item in tableHead" :key="item.prop" :label="item.label" :prop="item.prop" :width="item.width ? item.width : 125" align="center" />
       <!-- 操作区 -->
       <el-table-column fixed="right" label="操作" min-width="180">
         <template #default="scope">
-          <el-button size="small" @click="editHandler(scope.row)">编辑</el-button>
-          <el-button type="danger" size="small" @click="deleteHandler(scope.row)">删除</el-button>
+          <el-button size="small" @click="editHandler(scope.row)" title="编辑用户信息"
+            ><el-icon><Edit /></el-icon
+          ></el-button>
+          <el-button type="danger" size="small" @click="deleteHandler(scope.row)" title="删除用户"
+            ><el-icon><Delete /></el-icon
+          ></el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -35,7 +39,7 @@
   <!-- 模态框 -->
   <el-dialog v-model="dialogVisible" :title="occupy === 'add' ? '新增用户' : '编辑用户'" width="35%" :before-close="dialogClose">
     <!-- 新增用户表单 -->
-    <el-form :inline="true" :model="formUser" ref="userFormRef">
+    <el-form :inline="true" :model="formUser" ref="userFormRef" label-width="80px">
       <!-- 第一行 -->
       <el-row>
         <el-col :span="12">
@@ -55,26 +59,26 @@
       </el-row>
       <!-- 第二行 -->
       <el-row>
-        <el-col :span="11">
+        <el-col :span="12">
           <el-form-item label="性别" prop="sex" :rules="[{ required: true, message: '请选择性别' }]">
             <el-select v-model="formUser.sex" placeholder="请选择">
               <el-option label="女" value="1" />
               <el-option label="男" value="0" />
             </el-select> </el-form-item
         ></el-col>
-        <el-col :span="13">
+        <el-col :span="12">
           <el-form-item label="出生日期" prop="birth" :rules="[{ required: true, message: '请选择出生日期' }]"> <el-date-picker v-model="formUser.birth" type="date" label="出生日期" placeholder="请选择" style="width: 100%" value-format="YYYY-MM-DD" /> </el-form-item
         ></el-col>
       </el-row>
       <!-- 第三行 -->
-      <el-row>
-        <el-form-item label="地址" prop="addr" :rules="[{ required: true, message: '请输入地址' }]"> <el-input v-model="formUser.addr" type="textarea" placeholder="请输入地址" /> </el-form-item>
-      </el-row>
+      <!-- <el-row> -->
+      <el-form-item label="地址" prop="addr" :rules="[{ required: true, message: '请输入地址' }]" style="width: 60%"> <el-input v-model="formUser.addr" type="textarea" placeholder="请输入地址" resize="none" rows="3"  /> </el-form-item>
+      <!-- </el-row> -->
       <!-- 第四行 -->
-      <el-row style="justify-content: flex-end">
+      <el-row style="justify-content: flex-end" class="buttons-container">
         <el-form-item>
-          <el-button type="primary" @click="cancelHandler">取消</el-button>
-          <el-button type="primary" @click="onSubmit">确定</el-button>
+          <el-button type="primary" color="#2cb2c2" @click="resetHandler">重置</el-button>
+          <el-button type="primary" color="#2cb2c2" @click="onSubmit">确定</el-button>
         </el-form-item>
       </el-row>
     </el-form>
@@ -82,8 +86,9 @@
 </template>
 
 <script>
-import { defineComponent, getCurrentInstance, onMounted, reactive, ref } from 'vue'
+import { defineComponent, getCurrentInstance, onMounted, reactive, ref, markRaw } from 'vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
+import { Warning } from '@element-plus/icons-vue'
 
 export default defineComponent({
   setup() {
@@ -163,7 +168,21 @@ export default defineComponent({
 
     // 定义模态框关闭事件回调
     const dialogClose = done => {
-      ElMessageBox.confirm('关闭窗口将不会保存所编辑信息，确认关闭吗?')
+      let formFilled = Object.values(formUser).every(item => item === '')
+      if (formFilled)
+        return done(
+          // 表格为空，通过el-form提供的方法重置验证提示信息
+          proxy.$refs.userFormRef.resetFields()
+        )
+      // 表格不为空
+      ElMessageBox.confirm('关闭窗口将不会保存所编辑信息，确认关闭吗?', '提示', {
+        type: 'warning',
+        icon: markRaw(Warning),
+        cancelButtonText: '取消',
+        confirmButtonText: '确定',
+        confirmButtonClass: 'el-messageBox-confirm',
+        cancelButtonClass: 'el-messageBox-cancel'
+      })
         .then(() => {
           done()
           // 通过el-form提供的方法重置表单，同时也会重置验证提示信息
@@ -225,12 +244,15 @@ export default defineComponent({
       })
     }
 
-    // 定义表单取消按钮点击事件回调
-    const cancelHandler = () => {
-      // 通过el-form提供的方法重置表单，同时也会重置验证提示信息
-      proxy.$refs.userFormRef.resetFields()
-      // 关闭模态框
-      dialogVisible.value = false
+    // 定义表单重置按钮点击事件回调
+    const resetHandler = () => {
+      // 获取当前表单对象的键值，判断是否为空
+      let formFilled = Object.values(formUser).every(item => item === '')
+      if (formFilled) return
+      // 否则重置表单信息
+      for (let key in formUser) {
+        formUser[key] = ''
+      }
     }
 
     // 定义区分模态框使用者的变量（新增、编辑）
@@ -260,7 +282,14 @@ export default defineComponent({
     // 定义删除按钮点击事件回调
     const deleteHandler = rowData => {
       // 使用所删除用户id发起专门删除用户的get请求
-      ElMessageBox.confirm('确认永久删除该用户吗？')
+      ElMessageBox.confirm('确认永久删除该用户吗', '提示', {
+        type: 'warning',
+        icon: markRaw(Warning),
+        cancelButtonText: '取消',
+        confirmButtonText: '确定',
+        confirmButtonClass: 'el-messageBox-confirm',
+        cancelButtonClass: 'el-messageBox-cancel'
+      })
         .then(async () => {
           await proxy.$api.deleteUser({
             id: rowData.id
@@ -293,7 +322,7 @@ export default defineComponent({
       dialogClose,
       formUser,
       onSubmit,
-      cancelHandler,
+      resetHandler,
       editHandler,
       addHandler,
       occupy,
@@ -308,10 +337,22 @@ export default defineComponent({
 .action-contaienr {
   display: flex;
   justify-content: space-between;
+  .el-button {
+    color: #fff;
+  }
 }
 
 // 分页器
 .el-pagination {
+  margin-top: 15px;
   justify-content: center;
+  li.is-active {
+    background-color: #2cb2c2 !important;
+  }
+}
+.buttons-container {
+  .el-button {
+    color: #fff;
+  }
 }
 </style>

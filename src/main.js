@@ -13,10 +13,14 @@ import store from './store/store.js'
 import './mock/mock.js'
 // 导入已封装好的全局接口管理模块api.js
 import api from './api/api'
-// import mock from './mock/mock.js'
+// 引入vue3-lottie插件
+import Vue3Lottie from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
 import App from './App.vue'
 
 const app = createApp(App)
+// 注册ue3-lottie插件
+app.use(Vue3Lottie)
 
 // 暴露axios为全局属性$http
 app.config.globalProperties.$api = api
@@ -33,7 +37,5 @@ app.use(ElementPlus)
 store.commit('loadLocalMenu', router)
 // 注册路由模块
 app.use(router).use(store)
-
-
 
 app.mount('#app')

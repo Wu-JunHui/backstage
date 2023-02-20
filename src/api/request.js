@@ -21,15 +21,15 @@ service.interceptors.request.use(request => {
 
 service.interceptors.response.use(response => {
   // 解构赋值全局请求回来的数据，减少数据嵌套，方便赋值
-  const { code, data, msg } = response.data
+  const { code, data, message } = response.data
   // 若请求成功，code代码由后端决定
   if (code === 200) {
     return data
   } else {
     // 请求失败，提示失败msg（如果有）或自定义的错误消息
-    ElMessage.error(msg || NETWORK_ERROR)
+    ElMessage.error(data.message || message || NETWORK_ERROR)
     // 由于异步任务异常且状态码不匹配，需手动退出当前异步任务
-    return Promise.reject(msg || NETWORK_ERROR)
+    return Promise.reject(data.message || message || NETWORK_ERROR)
   }
 })
 

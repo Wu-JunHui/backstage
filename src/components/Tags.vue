@@ -61,5 +61,30 @@ export default {
     margin-right: 10px;
     cursor: pointer;
   }
+  // 修改tag的plain主题
+
+  .el-tag--plain {
+    --el-tag-border-color: #2cb2c2;
+    span {
+      color: #2cb2c2;
+    }
+    .el-icon {
+      color: #2cb2c2;
+    }
+    .el-tag__close:hover {
+      color: #fff;
+      background-color: #2cb2c2;
+    }
+  }
+  // 修改tag的dark主题
+  .el-tag--dark {
+    --el-tag-bg-color: #2cb2c2;
+    --el-tag-border-color: #2cb2c2;
+ 
+    .el-tag__close:hover {
+      color: #2cb2c2;
+      background-color: #fff;
+    }
+  }
 }
 </style>
