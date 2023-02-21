@@ -5,11 +5,15 @@
       <h2>通用后台管理系统</h2>
     </div>
     <div class="m_tips-container">
-      <img src="../assets/mobileTips.svg" alt="mobile" />
-      <p>
-        抱歉，该系统暂未进行移动端适配<br />请在PC端打开<br />
-        https://w-junhui.gitee.io/backstage
-      </p>
+      <div class="m_upTip">
+        <img src="../assets/cat.svg" alt="mobile" />
+        <span> 抱歉，该系统暂未进行移动端适配<br />请在电脑端打开</span>
+      </div>
+      <div class="m_downTip">
+        <img src="../assets/computer.svg" alt="mobile" />
+        <span>https://w-junhui.gitee.io/backstage</span>
+      </div>
+      <div></div>
     </div>
     <div class="m_authoer">Made with ❤️ by <a href="https://github.com/Wu-JunHui/" target="_blank">Wu-JunHui</a></div>
   </div>
@@ -17,7 +21,7 @@
 
 <style lang="scss">
 .mobile-container {
-  padding: 1.25rem;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,26 +34,37 @@
   display: flex;
   align-items: center;
   img {
-    width: 5rem;
+    width: 80px;
   }
   h2 {
     margin-left: 10px;
-    color: #D9E5DD;
-    font-size: 1.25rem;
-    letter-spacing: 0.3125rem;
+    color: #d9e5dd;
+    font-size: 20px;
+    letter-spacing: 5px;
   }
 }
 // 提示
 .m_tips-container {
-  margin-bottom: 6.25rem;
-  display: flex;
-  img {
-    width: 4.375rem;
+  margin-bottom: 100px;
+  color: #d9e5dd;
+
+  .m_upTip,
+  .m_downTip {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    img {
+      width: 65px;
+    }
   }
-  p{
-    margin-left: 0.625rem;
-    line-height: 1.5rem;
-    color: #D9E5DD;
+  .m_downTip {
+    margin-top: 10px;
+    justify-content: center;
+
+    img {
+      margin-right: 10px;
+      width: 22px;
+    }
   }
 }
 // 作者
@@ -59,7 +74,7 @@
   right: 0;
   margin: 20px;
   color: #fff;
-  font-size: 0.875rem;
+  font-size: 14px;
   a {
     color: #f6b049;
   }
