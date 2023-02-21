@@ -122,6 +122,7 @@ export default {
     width: 50px;
   }
   .authorInfo {
+    margin-left: 5px;
     cursor: default;
     white-space: nowrap;
 
