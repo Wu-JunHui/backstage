@@ -23,8 +23,8 @@
 
 当前管理系统中：
 
-- 默认**管理员**账号：admin，密码：123456
-- 默认**成员**账号：Apple，密码：123456
+- 默认**管理员**账号：`admin`，密码：`123456`
+- 默认**成员**账号：`Apple`，密码：`123456`
 
 部署于 GitHub pages: https://outofforbit.com/backstage
 
